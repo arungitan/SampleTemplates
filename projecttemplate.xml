@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<FilterTemplate disableEdit="false" objectVersion="0" publishVersion="0" version="1.1" id="Fortify-Another-Template">
+    <Name>Fortify onDemand - Vendor Assessment Template</Name>
+    <Description>Fortify Default Project Template</Description>
+    <FolderDefinition color="dbb604" id="87f56acd-b0e4-4e01-80da-152e67a3aad6">
+        <name>Unlikely</name>
+        <description>This folder contains all issues that do not require tainted input for exploit, such as configuration and controlflow issues.  These issues if exploited are unlikely to compromise the entire application, however the exploit of these issues could be used as a component of a multi-step attack on the application.</description>
+    </FolderDefinition>
+    <FolderDefinition color="df7a12" id="ceac8a28-0bd8-5695-9806-0244f4eea288">
+        <name>Likely</name>
+        <description>This folder contains issues that require access to the runtime environment of the application in order to exploit.  These issues are caused by tainted input originating from local resources, such as the file system, the database, system properties or the windows registry.  The attacker needs increased access to the runtime environment in order to control the data coming from these sources.  Exploit of these issues are likely to compromise the application, however the increased access necessary for exploit reduces this risk.</description>
+    </FolderDefinition>
+    <FolderDefinition color="ca3f37" id="cf1f81eb-a39c-f9eb-4e6e-2de361ab4b99">
+        <name>Very Likely</name>
+        <description>This folder contains all issues that are reported due to a remote taint source.  Issues that can be exploited due to data coming from standard HTTP traffic, input in web forms, or through webservices all fall into this folder.  Due to the fact that these issues can be exploited remotely it is very likely that one of these issues, or a few in conjunction, could lead to an exploit that would compromise the application.</description>
+    </FolderDefinition>
+    <DefaultFolder folderID="87f56acd-b0e4-4e01-80da-152e67a3aad6"/>
+    <TagDefinition extensible="true" hidden="false" id="87f2364f-dcd4-49e6-231d-f8d3f351645b" type="user">
+        <name>Status</name>
+        <Description>The analysis tag must be set for an issue to be counted as 'Audited.' This is encouraged to be the final action performed by an auditor.</Description>
+        <value>Not an Issue</value>
+        <value>Do Not Fix</value>
+        <value>Should Fix</value>
+    </TagDefinition>
+        <PrimaryTag>
+        <primaryTagGUID>87f2364f-dcd4-49e6-231d-f8d3f351645b</primaryTagGUID>
+        <neutralWeight>1</neutralWeight>
+        <openRange>(2,3]</openRange>
+        <naiRange>[1,1]</naiRange>
+    </PrimaryTag>
+    <FilterSet disableEdit="false" enabled="true" id="babb745a-375a-32fd-adfc-b1c14feef22d" type="user">
+        <Title>Vendor Assessment</Title>
+        <Description>This setting provides all high severity issues from all possible input sources.  Restricting the set of issues to security critical issues ensures a concise but comprehensive view of the state of codebase.  The foldering system used in this template seperates the reported issues into three folders based on the nature of the taint source causing the report of the issue.  Issues found in the 'Very Likely' folder are from a taint source that is remotely accessible.  The 'Likely' folder contains only issues that originate from a local taint source, and the 'Unlikely' folder contains all issues that do not require tainted input for exploit.</Description>
+        <EnabledFolders>cf1f81eb-a39c-f9eb-4e6e-2de361ab4b99</EnabledFolders>
+        <EnabledFolders>ceac8a28-0bd8-5695-9806-0244f4eea288</EnabledFolders>
+        <EnabledFolders>87f56acd-b0e4-4e01-80da-152e67a3aad6</EnabledFolders>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>audience:!medium</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>[fortify priority order]:"low"</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>[fortify priority order]:"medium"</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>cf1f81eb-a39c-f9eb-4e6e-2de361ab4b99</actionParam>
+            <query>taint:"no_new_line, web, xss"</query>
+            <action>setFolder</action>
+        </Filter>
+        <Filter>
+            <actionParam>cf1f81eb-a39c-f9eb-4e6e-2de361ab4b99</actionParam>
+            <query>taint:NETWORK taint:RPC taint:STREAM taint:WEB taint:FORM taint:WEBSERVICE taint:DATABASE</query>
+            <action>setFolder</action>
+        </Filter>
+		 <Filter>
+					<actionParam>false</actionParam>
+					<query>category:password management\: password in comment category:open redirect category:Password Management\: Empty Password in Configuration category:Race Condition Singleton Member Field category:PHP Misconfiguration category:Path Manipulation category:Privacy Violation category:Race Condition\: Static Database Connection category:XML Injection File category:Xpath Injection category:Dynamic Code Evaluation category:Cross-Site Scripting\: Poor Validation category:Log Forging category:Password Management\: Hardcoded Password category:System Information Leak\: PHP category:Race Condition\: PHP Design Flaw category:Unreleased Resource</query>
+					<action>hide</action>
+				</Filter>		 
+         <Filter>
+                 <actionParam>false</actionParam>
+                 <query>analyzer:pentest</query>
+                 <action>hide</action>
+         </Filter>
+			<Filter>
+            <actionParam>ceac8a28-0bd8-5695-9806-0244f4eea288</actionParam>
+            <query>taint:ARGS taint:CONSOLE taint:CURSES taint:DNS taint:ENVIRONMENT taint:FILE_SYSTEM taint:NAMING taint:STDIN taint:PROPERTY taint:REGISTRY taint:DATABASE taint:GUI_FORM taint:LDAP taint:SERIALIZED taint:XML</query>
+            <action>setFolder</action>
+        </Filter>
+    </FilterSet>
+</FilterTemplate>
+

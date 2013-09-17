@@ -1,0 +1,1192 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<FilterTemplate publishVersion="0" objectVersion="0" disableEdit="false" version="1.1">
+    <Name></Name>
+    <FolderDefinition color="ca3f37" id="6c82a9c7-dcd4-49e6-861d-93df1aadb4e6">
+        <name>High</name>
+        <description>This folder contains issues that are critical to the application's security and should be immediately addressed</description>
+    </FolderDefinition>
+    <FolderDefinition color="df7a12" id="c822364f-c150-4171-bb1e-f8d3f351686b">
+        <name>Medium</name>
+        <description>This folder contains issues that are important to address</description>
+    </FolderDefinition>
+    <FolderDefinition color="dbb604" id="87f56acd-b0e4-4e01-80da-152e67a3aad6">
+        <name>Low</name>
+        <description>This folder provides a comprehensive list of issues in the application including code quality issues</description>
+    </FolderDefinition>
+    <DefaultFolder folderID="87f56acd-b0e4-4e01-80da-152e67a3aad6"/>
+    <TagDefinition hidden="false" extensible="false" type="user" id="87f2364f-dcd4-49e6-861d-f8d3f351686b">
+        <name>Analysis</name>
+        <Description>The analysis tag must be set for an issue to be counted as 'Audited.' This is encouraged to be the final action performed by an auditor.</Description>
+        <value hidden="false" id="0">Not an Issue</value>
+        <value hidden="false" id="1">Reliability Issue</value>
+        <value hidden="false" id="2">Unknown</value>
+        <value hidden="false" id="3">Suspicious</value>
+        <value hidden="false" id="4">Exploitable</value>
+    </TagDefinition>
+    <TagDefinition hidden="false" extensible="true" type="user" id="35868f2d-810b-37b8-a948-94bde0facd40">
+        <name>SR#</name>
+        <Description>Service Request Number</Description>
+        <value hidden="false" id="0">2061053</value>
+        <value hidden="false" id="1">2092139</value>
+        <value hidden="false" id="2">2170702</value>
+        <value hidden="false" id="3">2225136</value>
+        <value hidden="false" id="4">2270484</value>
+        <value hidden="false" id="5">2339827</value>
+        <value hidden="false" id="6">2416483</value>
+        <value hidden="false" id="7">33828</value>
+    </TagDefinition>
+    <TagDefinition hidden="false" extensible="true" type="user" id="6d2d2eda-2df1-5488-9cf0-acd344216de3">
+        <name>SP#</name>
+        <Description>Security Plan Number</Description>
+        <value hidden="false" id="0">68437</value>
+        <value hidden="false" id="1">69235</value>
+        <value hidden="false" id="2">70413</value>
+        <value hidden="false" id="3">71274</value>
+        <value hidden="false" id="4">71604</value>
+        <value hidden="false" id="5">111111</value>
+        <value hidden="false" id="6">12259</value>
+        <value hidden="false" id="7">104045</value>
+    </TagDefinition>
+    <TagDefinition hidden="false" extensible="true" type="user" id="e463c2d8-c5d9-fa26-a1b0-50dd87bd9216">
+        <name>Assessment#</name>
+        <Description>SPARC Assessment Number </Description>
+        <value hidden="false" id="0">39048</value>
+    </TagDefinition>
+    <TagDefinition hidden="false" extensible="false" type="user" id="e00eac27-aefe-3c9e-d1af-40b3cfbebb86">
+        <name>SCR Analysis</name>
+        <Description>This tag indicates how this issue was disposition in the previous code review</Description>
+        <value hidden="false" id="0">Not An Issue</value>
+        <value hidden="false" id="1">Reliability Issue</value>
+        <value hidden="false" id="2">Suspicious</value>
+        <value hidden="false" id="3">Exploitable</value>
+        <value hidden="false" id="4">Unknown</value>
+    </TagDefinition>
+    <TagDefinition hidden="false" extensible="false" type="user" id="30fa270e-9a93-b951-9e94-0b4ea0c20f33">
+        <name>SCR Suppress</name>
+        <Description>This tag indicates how whether this issue was suppressed in the fpr file that was submitted for the code review</Description>
+        <value hidden="false" id="0">true</value>
+        <value hidden="false" id="1">false</value>
+    </TagDefinition>
+    <PrimaryTag>
+        <primaryTagGUID>87f2364f-dcd4-49e6-861d-f8d3f351686b</primaryTagGUID>
+        <neutralWeight>2</neutralWeight>
+        <openRange>[2,5]</openRange>
+        <naiRange>[0,2)</naiRange>
+    </PrimaryTag>
+    <FilterSet disableEdit="false" enabled="false" id="a243b195-0a59-3f8b-1403-d55b7a7d78e6" type="user">
+        <Title>Broad</Title>
+        <Description>This setting provides the source code analyzer with the most comprehensive set of rules.  It should be used to discover a broad set of security issues to be audited.  Fortify SCA assigns issues a severity level based on the potential impact the issue could have on the security of an application. The engine also assigns a confidence level to further prioritize issues of the same severity. This set of filters uses these two attributes in order to sort the issues into three folders: Hot, Warning, and Info.</Description>
+        <EnabledFolders>6c82a9c7-dcd4-49e6-861d-93df1aadb4e6</EnabledFolders>
+        <EnabledFolders>c822364f-c150-4171-bb1e-f8d3f351686b</EnabledFolders>
+        <EnabledFolders>87f56acd-b0e4-4e01-80da-152e67a3aad6</EnabledFolders>
+        <Filter>
+            <actionParam>c822364f-c150-4171-bb1e-f8d3f351686b</actionParam>
+            <query>severity:(2,5] confidence:[3,5]</query>
+            <action>setFolder</action>
+        </Filter>
+        <Filter>
+            <actionParam>6c82a9c7-dcd4-49e6-861d-93df1aadb4e6</actionParam>
+            <query>severity:(3,5] confidence:[4,5]</query>
+            <action>setFolder</action>
+        </Filter>
+    </FilterSet>
+    <FilterSet disableEdit="false" enabled="false" id="babb745a-375a-32fd-adfc-b9d14feef22d" type="user">
+        <Title>Medium</Title>
+        <Description>This setting provides the source code analyzer with rules that strike a balance between producing results that detail all potential issues and a targeted set of possible vulnerabilities.  Fortify SCA assigns issues a severity level based on the potential impact the issue could have on the security of an application. The engine also assigns a confidence level to further prioritize issues of the same severity. This set of filters uses these two attributes in order to sort the issues into three folders: Hot, Warning, and Info.</Description>
+        <EnabledFolders>6c82a9c7-dcd4-49e6-861d-93df1aadb4e6</EnabledFolders>
+        <EnabledFolders>c822364f-c150-4171-bb1e-f8d3f351686b</EnabledFolders>
+        <EnabledFolders>87f56acd-b0e4-4e01-80da-152e67a3aad6</EnabledFolders>
+        <Filter>
+            <actionParam>c822364f-c150-4171-bb1e-f8d3f351686b</actionParam>
+            <query>severity:(2,5] confidence:[3,5]</query>
+            <action>setFolder</action>
+        </Filter>
+        <Filter>
+            <actionParam>6c82a9c7-dcd4-49e6-861d-93df1aadb4e6</actionParam>
+            <query>severity:(3,5] confidence:[4,5]</query>
+            <action>setFolder</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>audience:!medium</query>
+            <action>hide</action>
+        </Filter>
+    </FilterSet>
+    <FilterSet disableEdit="false" enabled="false" id="76855ff8-6afc-3735-52ca-efa42a60e3d4" type="user">
+        <Title>Targeted</Title>
+        <Description>This setting provides the source code analyzer with rules within categories that have been proven to be high priority issues across multiple industries and within a variety of environments.  They should be used to discover a limited set of well-known, critical security issues.  Fortify SCA assigns issues a severity level based on the potential impact the issue could have on the security of an application. The engine also assigns a confidence level to further prioritize issues of the same severity. This set of filters uses these two attributes in order to sort the issues into three folders: Hot, Warning, and Info.</Description>
+        <EnabledFolders>6c82a9c7-dcd4-49e6-861d-93df1aadb4e6</EnabledFolders>
+        <EnabledFolders>c822364f-c150-4171-bb1e-f8d3f351686b</EnabledFolders>
+        <EnabledFolders>87f56acd-b0e4-4e01-80da-152e67a3aad6</EnabledFolders>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>audience:!targeted</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>c822364f-c150-4171-bb1e-f8d3f351686b</actionParam>
+            <query>severity:(2,5] confidence:[3,5]</query>
+            <action>setFolder</action>
+        </Filter>
+        <Filter>
+            <actionParam>6c82a9c7-dcd4-49e6-861d-93df1aadb4e6</actionParam>
+            <query>severity:(3,5] confidence:[4,5]</query>
+            <action>setFolder</action>
+        </Filter>
+    </FilterSet>
+    <FilterSet disableEdit="false" enabled="false" id="d7c896cb-c7a6-91f9-66ca-c90a9385bf63" type="user">
+        <Title>Developer</Title>
+        <Description>Fortify SCA assigns issues a severity level based on the potential impact the issue could have on the security of an application. The engine also assigns a confidence level to further prioritize issues of the same severity. This set of filters uses these two attributes in order to sort the issues into three folders: Hot, Warning, and Info.</Description>
+        <EnabledFolders>6c82a9c7-dcd4-49e6-861d-93df1aadb4e6</EnabledFolders>
+        <EnabledFolders>c822364f-c150-4171-bb1e-f8d3f351686b</EnabledFolders>
+        <EnabledFolders>87f56acd-b0e4-4e01-80da-152e67a3aad6</EnabledFolders>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>audience:!dev</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>c822364f-c150-4171-bb1e-f8d3f351686b</actionParam>
+            <query>severity:(2,5] confidence:[3,5]</query>
+            <action>setFolder</action>
+        </Filter>
+        <Filter>
+            <actionParam>6c82a9c7-dcd4-49e6-861d-93df1aadb4e6</actionParam>
+            <query>severity:(3,5] confidence:[4,5]</query>
+            <action>setFolder</action>
+        </Filter>
+    </FilterSet>
+    <FilterSet disableEdit="false" enabled="true" id="7f935b76-ab18-79aa-550c-b10d706399af" type="user">
+        <Title>SCR</Title>
+        <Description>Based on Broad but blocks all rules as defined in the Playbook.</Description>
+        <EnabledFolders>6c82a9c7-dcd4-49e6-861d-93df1aadb4e6</EnabledFolders>
+        <EnabledFolders>c822364f-c150-4171-bb1e-f8d3f351686b</EnabledFolders>
+        <EnabledFolders>87f56acd-b0e4-4e01-80da-152e67a3aad6</EnabledFolders>
+        <Filter>
+            <actionParam>c822364f-c150-4171-bb1e-f8d3f351686b</actionParam>
+            <query>severity:(2,5] confidence:[3,5]</query>
+            <action>setFolder</action>
+        </Filter>
+        <Filter>
+            <actionParam>6c82a9c7-dcd4-49e6-861d-93df1aadb4e6</actionParam>
+            <query>severity:(3,5] confidence:[4,5]</query>
+            <action>setFolder</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>ruleid:897cf7ef-116f-4853-abea-396d250089bc</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>ruleid:98a54201-01f7-4140-8607-1c6506da4138</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>ruleid:34c35c8f-c534-4aec-8a60-1043b42cfc82</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>ruleid:b2a28a42-7f3b-4013-b9bf-05e448259d88</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>ruleid:1262650d-76f0-47ef-90d8-dc02b883b3e8</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:code correctness\: call to</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;heap inspection&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;j2ee bad practices\: getconnection&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:credential management</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;asp.net bad practices\: non-serializable object stored in session&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;poor error handling\: empty catch block&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:poor error handling\: overly broad</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:poor error handling\: program catches null</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;poor error handling\: return inside finally&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;code correctness\: class implements icloneable&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;code correctness\: missing [serializable] attribute&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;code correctness\: misspelled method name&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;code correctness\: null argument to equals&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;dead code\: broken override&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;dead code\: unused field&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:poor style\: confusing naming</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;poor style\: identifier contains dollar symbol ($)&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;portability flaw&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;poor logging practice\: logger not declared static final&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;poor logging practice\: multiple loggers&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;unsafe mobile code\: public finalize() method&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;insecure compiler optimization&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;access control\: database&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;code correctness\: class does not implement cloneable&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;poor style\: value never read&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>c822364f-c150-4171-bb1e-f8d3f351686b</actionParam>
+            <query>taint:database, httprs, xss [fortify priority order]:high</query>
+            <action>setFolder</action>
+        </Filter>
+        <Filter>
+            <actionParam>87f56acd-b0e4-4e01-80da-152e67a3aad6</actionParam>
+            <query>taint:property, weakcrypto [fortify priority order]:high</query>
+            <action>setFolder</action>
+        </Filter>
+        <Filter>
+            <actionParam>87f56acd-b0e4-4e01-80da-152e67a3aad6</actionParam>
+            <query>taint:systeminfo [fortify priority order]:high</query>
+            <action>setFolder</action>
+        </Filter>
+        <Filter>
+            <actionParam>6c82a9c7-dcd4-49e6-861d-93df1aadb4e6</actionParam>
+            <query>taint:httprs, web, xss [fortify priority order]:!high analyzer:data flow</query>
+            <action>setFolder</action>
+        </Filter>
+    </FilterSet>
+    <FilterSet disableEdit="false" enabled="false" id="98a02c6d-3101-2941-e34f-9a1ffa2ef1cf" type="user">
+        <Title>wfDeveloper</Title>
+        <Description>This template enables the Wells Fargo developer to focus their attention on findings that are likely to result in moderate or higher risk ratings in a Security Plan.</Description>
+        <EnabledFolders>6c82a9c7-dcd4-49e6-861d-93df1aadb4e6</EnabledFolders>
+        <EnabledFolders>c822364f-c150-4171-bb1e-f8d3f351686b</EnabledFolders>
+        <EnabledFolders>87f56acd-b0e4-4e01-80da-152e67a3aad6</EnabledFolders>
+        <Filter>
+            <actionParam>c822364f-c150-4171-bb1e-f8d3f351686b</actionParam>
+            <query>severity:(2,5] confidence:[3,5]</query>
+            <action>setFolder</action>
+        </Filter>
+        <Filter>
+            <actionParam>6c82a9c7-dcd4-49e6-861d-93df1aadb4e6</actionParam>
+            <query>severity:(3,5] confidence:[4,5]</query>
+            <action>setFolder</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>ruleid:897cf7ef-116f-4853-abea-396d250089bc</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>ruleid:98a54201-01f7-4140-8607-1c6506da4138</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>ruleid:34c35c8f-c534-4aec-8a60-1043b42cfc82</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>ruleid:b2a28a42-7f3b-4013-b9bf-05e448259d88</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>ruleid:1262650d-76f0-47ef-90d8-dc02b883b3e8</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:code correctness\: call to</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;heap inspection&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;j2ee bad practices\: getconnection&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:credential management</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;asp.net bad practices\: non-serializable object stored in session&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;poor error handling\: empty catch block&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:poor error handling\: overly broad</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:poor error handling\: program catches null</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;poor error handling\: return inside finally&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;code correctness\: class implements icloneable&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;code correctness\: missing [serializable] attribute&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;code correctness\: misspelled method name&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;code correctness\: null argument to equals&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;dead code\: broken override&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;dead code\: unused field&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:poor style\: confusing naming</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;poor style\: identifier contains dollar symbol ($)&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;portability flaw&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;poor logging practice\: logger not declared static final&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;poor logging practice\: multiple loggers&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;unsafe mobile code\: public finalize() method&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;insecure compiler optimization&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>c822364f-c150-4171-bb1e-f8d3f351686b</actionParam>
+            <query>taint:database, httprs, xss [fortify priority order]:high</query>
+            <action>setFolder</action>
+        </Filter>
+        <Filter>
+            <actionParam>87f56acd-b0e4-4e01-80da-152e67a3aad6</actionParam>
+            <query>taint:property, weakcrypto [fortify priority order]:high</query>
+            <action>setFolder</action>
+        </Filter>
+        <Filter>
+            <actionParam>87f56acd-b0e4-4e01-80da-152e67a3aad6</actionParam>
+            <query>taint:systeminfo [fortify priority order]:high</query>
+            <action>setFolder</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:bad practice</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:struts</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:log</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:null dereference</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:often misused\: file uploads</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:out-of-bounds read</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:process control</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:unsafe jni</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:code correctness\: call</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:code correctness\: erronneous</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:missing check</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:denial of service</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:object model violation</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:poor style</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:insecure randomness</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:empty catch block</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:missing catch block</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:poor error handling</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:dead code</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:obsolete</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:redundant</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:type mismatch</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:undefined</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:system information leak</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:trust boundary violation</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:unsafe mobile code</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:weak xml schema</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>taint:web, webservice [fortify priority order]:low, medium</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>6c82a9c7-dcd4-49e6-861d-93df1aadb4e6</actionParam>
+            <query>taint:httprs, web, xss [fortify priority order]:!high analyzer:data flow</query>
+            <action>setFolder</action>
+        </Filter>
+        <Filter>
+            <actionParam>6c82a9c7-dcd4-49e6-861d-93df1aadb4e6</actionParam>
+            <query>category:sql injection</query>
+            <action>setFolder</action>
+        </Filter>
+        <Filter>
+            <actionParam>6c82a9c7-dcd4-49e6-861d-93df1aadb4e6</actionParam>
+            <query>category:cross-site scripting\: persistent</query>
+            <action>setFolder</action>
+        </Filter>
+        <Filter>
+            <actionParam>6c82a9c7-dcd4-49e6-861d-93df1aadb4e6</actionParam>
+            <query>category:cross-site scripting\: reflected</query>
+            <action>setFolder</action>
+        </Filter>
+        <Filter>
+            <actionParam>6c82a9c7-dcd4-49e6-861d-93df1aadb4e6</actionParam>
+            <query>category:cross-site scripting</query>
+            <action>setFolder</action>
+        </Filter>
+        <Filter>
+            <actionParam>6c82a9c7-dcd4-49e6-861d-93df1aadb4e6</actionParam>
+            <query>category:session fixation</query>
+            <action>setFolder</action>
+        </Filter>
+    </FilterSet>
+    <FilterSet disableEdit="false" enabled="false" id="9b336c98-6519-a357-922a-1dae498be1a6" type="user">
+        <Title>RCIS</Title>
+        <Description>This setting provides the source code analyzer with the most comprehensive set of rules.  It should be used to discover a broad set of security issues to be audited.  Fortify SCA assigns issues a severity level based on the potential impact the issue could have on the security of an application. The engine also assigns a confidence level to further prioritize issues of the same severity. This set of filters uses these two attributes in order to sort the issues into three folders: Hot, Warning, and Info.</Description>
+        <EnabledFolders>6c82a9c7-dcd4-49e6-861d-93df1aadb4e6</EnabledFolders>
+        <EnabledFolders>c822364f-c150-4171-bb1e-f8d3f351686b</EnabledFolders>
+        <EnabledFolders>87f56acd-b0e4-4e01-80da-152e67a3aad6</EnabledFolders>
+        <Filter>
+            <actionParam>c822364f-c150-4171-bb1e-f8d3f351686b</actionParam>
+            <query>severity:(2,5] confidence:[3,5]</query>
+            <action>setFolder</action>
+        </Filter>
+        <Filter>
+            <actionParam>6c82a9c7-dcd4-49e6-861d-93df1aadb4e6</actionParam>
+            <query>severity:(3,5] confidence:[4,5]</query>
+            <action>setFolder</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;sql injection\: nhibernate&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:denial of service</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;log forging&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;dynamic code evaluation\: code injection&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;http response splitting&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;code correctness\: call to gc.collect()&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;code correctness\: call to system.gc()&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;code correctness\: erroneous finalize method&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:object model violation\:</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:access control\: database</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:insecure randomness</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:asp.net bad practices\: non-serializeable object</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:empty catch block</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:overly broad catch</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:overly broad throws</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:program catches nullreferenceexception</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:class implements icloneable</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:missing [serializable] attribute</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:mispelled method name</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:null argument to equals()</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:dead code\:</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:null dereference</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;unreleased resource\:&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;hardcoded domain in html&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;trust boundary violation&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:weak xml schema\:</query>
+            <action>hide</action>
+        </Filter>
+    </FilterSet>
+    <FilterSet disableEdit="false" enabled="false" id="427df1a7-0444-2197-ef80-44f052e70c05" type="user">
+        <Title>isgfilter</Title>
+        <Description>This template enables the Wells Fargo developer to focus their attention on findings that are likely to result in moderate or higher risk ratings in a Security Plan.</Description>
+        <EnabledFolders>6c82a9c7-dcd4-49e6-861d-93df1aadb4e6</EnabledFolders>
+        <EnabledFolders>c822364f-c150-4171-bb1e-f8d3f351686b</EnabledFolders>
+        <EnabledFolders>87f56acd-b0e4-4e01-80da-152e67a3aad6</EnabledFolders>
+        <Filter>
+            <actionParam>87f56acd-b0e4-4e01-80da-152e67a3aad6</actionParam>
+            <query>severity:[1,5]</query>
+            <action>setFolder</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>ruleid:897cf7ef-116f-4853-abea-396d250089bc</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>ruleid:98a54201-01f7-4140-8607-1c6506da4138</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>ruleid:34c35c8f-c534-4aec-8a60-1043b42cfc82</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>ruleid:b2a28a42-7f3b-4013-b9bf-05e448259d88</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>ruleid:1262650d-76f0-47ef-90d8-dc02b883b3e8</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:code correctness\: call to</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;heap inspection&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;j2ee bad practices\: getconnection&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:credential management</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;asp.net bad practices\: non-serializable object stored in session&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;poor error handling\: empty catch block&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:poor error handling\: overly broad</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:poor error handling\: program catches null</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;poor error handling\: return inside finally&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;code correctness\: class implements icloneable&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;code correctness\: missing [serializable] attribute&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;code correctness\: misspelled method name&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;code correctness\: null argument to equals&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;dead code\: broken override&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;dead code\: unused field&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:poor style\: confusing naming</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;poor style\: identifier contains dollar symbol ($)&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;portability flaw&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;poor logging practice\: logger not declared static final&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;poor logging practice\: multiple loggers&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;unsafe mobile code\: public finalize() method&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:&quot;insecure compiler optimization&quot;</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>87f56acd-b0e4-4e01-80da-152e67a3aad6</actionParam>
+            <query>taint:property, weakcrypto [fortify priority order]:high</query>
+            <action>setFolder</action>
+        </Filter>
+        <Filter>
+            <actionParam>87f56acd-b0e4-4e01-80da-152e67a3aad6</actionParam>
+            <query>taint:systeminfo [fortify priority order]:high</query>
+            <action>setFolder</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:bad practice</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:struts</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:log</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:null dereference</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:often misused\: file uploads</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:out-of-bounds read</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:process control</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:unsafe jni</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:code correctness\: call</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:code correctness\: erronneous</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:missing check</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:denial of service</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:object model violation</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:poor style</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:insecure randomness</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:empty catch block</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:missing catch block</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:poor error handling</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:dead code</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:obsolete</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:redundant</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:type mismatch</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:undefined</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:system information leak</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:trust boundary violation</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:unsafe mobile code</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>category:weak xml schema</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>true</actionParam>
+            <query>taint:web, webservice [fortify priority order]:low, medium</query>
+            <action>hide</action>
+        </Filter>
+        <Filter>
+            <actionParam>6c82a9c7-dcd4-49e6-861d-93df1aadb4e6</actionParam>
+            <query>taint:httprs, web, xss [fortify priority order]:!high analyzer:data flow</query>
+            <action>setFolder</action>
+        </Filter>
+        <Filter>
+            <actionParam>6c82a9c7-dcd4-49e6-861d-93df1aadb4e6</actionParam>
+            <query>category:sql injection</query>
+            <action>setFolder</action>
+        </Filter>
+        <Filter>
+            <actionParam>6c82a9c7-dcd4-49e6-861d-93df1aadb4e6</actionParam>
+            <query>category:cross-site scripting\: persistent</query>
+            <action>setFolder</action>
+        </Filter>
+        <Filter>
+            <actionParam>6c82a9c7-dcd4-49e6-861d-93df1aadb4e6</actionParam>
+            <query>category:cross-site scripting\: reflected</query>
+            <action>setFolder</action>
+        </Filter>
+        <Filter>
+            <actionParam>6c82a9c7-dcd4-49e6-861d-93df1aadb4e6</actionParam>
+            <query>category:cross-site scripting</query>
+            <action>setFolder</action>
+        </Filter>
+        <Filter>
+            <actionParam>6c82a9c7-dcd4-49e6-861d-93df1aadb4e6</actionParam>
+            <query>category:session fixation</query>
+            <action>setFolder</action>
+        </Filter>
+        <Filter>
+            <actionParam>c822364f-c150-4171-bb1e-f8d3f351686b</actionParam>
+            <query>category:cross-site request forgery</query>
+            <action>setFolder</action>
+        </Filter>
+        <Filter>
+            <actionParam>c822364f-c150-4171-bb1e-f8d3f351686b</actionParam>
+            <query>category:resource injection</query>
+            <action>setFolder</action>
+        </Filter>
+        <Filter>
+            <actionParam>c822364f-c150-4171-bb1e-f8d3f351686b</actionParam>
+            <query>category:privacy violation</query>
+            <action>setFolder</action>
+        </Filter>
+        <Filter>
+            <actionParam>c822364f-c150-4171-bb1e-f8d3f351686b</actionParam>
+            <query>category:header manipulation\: cookies</query>
+            <action>setFolder</action>
+        </Filter>
+        <Filter>
+            <actionParam>c822364f-c150-4171-bb1e-f8d3f351686b</actionParam>
+            <query>category:header manipulation</query>
+            <action>setFolder</action>
+        </Filter>
+        <Filter>
+            <actionParam>6c82a9c7-dcd4-49e6-861d-93df1aadb4e6</actionParam>
+            <query>category:springmvc modelandview injection</query>
+            <action>setFolder</action>
+        </Filter>
+        <Filter>
+            <actionParam>c822364f-c150-4171-bb1e-f8d3f351686b</actionParam>
+            <query>category:cookie security\: overly broad domain</query>
+            <action>setFolder</action>
+        </Filter>
+    </FilterSet>
+</FilterTemplate>
